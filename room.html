@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="./dist/fontawesome/css/all.min.css">
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="./dist/animate/animate.css">
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="./dist/uikit/uikit.min.css" />
+
+    <!-- Semantic UI CSS -->
+    <link rel="stylesheet" href="./dist/semantic/semantic.min.css">
+
+    <!-- Style -->
+    <style>
+        body {
+            overflow-y: hidden;
+        }
+
+        #app {
+            padding-top: 0;
+            margin: 0;
+            border: 0;
+        }
+
+        .ui.breadcrumb {
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .ui.grid {
+            margin-top: 0;
+        }
+
+        [uk-slideshow] img {
+            filter: brightness(50%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ui very padded segment" id="app">
+        <!-- Menu -->
+        <div class="ui menu">
+            <div class="header item">
+                Library System
+            </div>
+            <a href="search.html" class="item" data-tooltip="Book" data-position="bottom center">
+                <i class="book icon"></i>
+            </a>
+            <a href="room.html" class="item active" data-tooltip="Room" data-position="bottom center">
+                <i class="cube icon"></i>
+            </a>
+            <div class="right menu">
+                <a id="fontsize" class="item" data-tooltip="Font Size" data-position="bottom center">
+                    <i class="font icon"></i>
+                </a>
+                <div class="ui right dropdown item">
+                    <i class="user icon"></i>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div class="item">Applications</div>
+                        <div class="item">International Students</div>
+                        <div class="item">Scholarships</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- breadcrumb -->
+        <div class="ui breadcrumb">
+            <a class="section" href="index.html">Home</a>
+            <div class="divider"> / </div>
+            <a class="section active">Room</a>
+        </div>
+
+        <div class="ui container">
+            <h1 class="ui header">Room</h1>
+
+            <div uk-slideshow="animation: pull; autoplay: true; autoplay-interval: 3000; max-height: 300;">
+                <div class="uk-position-relative uk-visible-toggle uk-light">
+                    <ul class="uk-slideshow-items">
+                        <li>
+                            <img src="./res/booking_room_1.jpg" alt="" uk-cover>
+                            <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom">
+                                <h3 class="uk-margin-remove">Room 1</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="./res/booking_room_2.jpg" alt="" uk-cover>
+                            <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom">
+                                <h3 class="uk-margin-remove">Room 2</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="./res/booking_room_3.jpg" alt="" uk-cover>
+                            <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom">
+                                <h3 class="uk-margin-remove">Room 3</h3>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-slidenav-large" href="#"
+                        uk-slidenav-previous uk-slideshow-item="previous"></a>
+                    <a class="uk-position-center-right uk-position-small uk-hidden-hover uk-slidenav-large" href="#"
+                        uk-slidenav-next uk-slideshow-item="next"></a>
+                </div>
+
+                <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
+            </div>
+
+            <div class="ui two column grid">
+                <div class="three wide column">
+                    <div class="ui vertical pointing fluid menu">
+                        <a class="active item">
+                            Room 1
+                        </a>
+                        <a class="item">
+                            Room 2
+                        </a>
+                        <a class="item">
+                            Room 3
+                        </a>
+                    </div>
+                </div>
+
+                <div class="thirteen wide column">
+                    <h2 class="ui header">
+                        <i class="cube icon"></i>
+                        Room 1
+                    </h2>
+
+                    <table class="ui definition celled table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>20/10</th>
+                                <th>21/10</th>
+                                <th>22/10</th>
+                                <th>23/10</th>
+                                <th>24/10</th>
+                                <th>25/10</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>09:00-10:00</td>
+                                <td class="negative"><i class="close icon"></i>Booked</td>
+                                <td class="negative"><i class="close icon"></i>Booked</td>
+                                <td class="negative"><i class="close icon"></i>Booked</td>
+                                <td class="negative"><i class="close icon"></i>Booked</td>
+                                <td class="negative"><i class="close icon"></i>Booked</td>
+                                <td class="positive selectable"><i class="check icon"></i>Approved</td>
+                            </tr>
+                            <tr>
+                                <td>10:00-11:00</td>
+                                <td class="negative"><i class="close icon"></i>Booked</td>
+                                <td class="selectable"></td>
+                                <td class="selectable"></td>
+                                <td class="negative"><i class="close icon"></i>Booked</td>
+                                <td class="negative"><i class="close icon"></i>Booked</td>
+                                <td class="selectable"></td>
+                            </tr>
+                            <tr>
+                                <td>11:00-12:00</td>
+                                <td class="selectable"></td>
+                                <td class="selectable"></td>
+                                <td class="negative"><i class="close icon"></i>Booked</td>
+                                <td class="selectable"></td>
+                                <td class="selectable"></td>
+                                <td class="negative"><i class="close icon"></i>Booked</td>
+                            </tr>
+                            <tr>
+                                <td>12:00-13:00</td>
+                                <td class="selectable"></td>
+                                <td class="negative"><i class="close icon"></i>Booked</td>
+                                <td class="negative"><i class="close icon"></i>Booked</td>
+                                <td class="selectable"></td>
+                                <td class="negative"><i class="close icon"></i>Booked</td>
+                                <td class="selectable"></td>
+                            </tr>
+                            <tr>
+                                <td>13:00-14:00</td>
+                                <td class="selectable"></td>
+                                <td class="negative"><i class="close icon"></i>Booked</td>
+                                <td class="selectable"></td>
+                                <td class="selectable"></td>
+                                <td class="selectable"></td>
+                                <td class="negative"><i class="close icon"></i>Booked</td>
+                            </tr>
+                            <tr>
+                                <td>14:00-15:00</td>
+                                <td class="selectable"></td>
+                                <td class="negative"><i class="close icon"></i>Booked</td>
+                                <td class="selectable"></td>
+                                <td class="selectable"></td>
+                                <td class="selectable"></td>
+                                <td class="negative"><i class="close icon"></i>Booked</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="./dist/jquery/jquery.min.js"></script>
+
+    <!-- Animate JS -->
+    <script src="./dist/animate/animate.js"></script>
+
+    <!-- UIkit JS -->
+    <script src="./dist/uikit/uikit.min.js"></script>
+    <script src="./dist/uikit/uikit-icons.min.js"></script>
+
+    <!-- Semantic UI JS -->
+    <script src="./dist/semantic/semantic.min.js"></script>
+
+    <script>
+        if (!localStorage[`user`])
+            localStorage[`user`] = JSON.stringify(user)
+
+        if (!localStorage[`resource`])
+            localStorage[`resource`] = JSON.stringify(resource)
+
+        $(`.selectable`).click(function () {
+            let _this = this
+            $(`tr`).each(function() { $(this).toggleClass(`disabled`) })
+            $(_this).append(`<div class="ui active loader"></div>`)
+            let countdown = 2
+            let x = setInterval(function () {
+                countdown--
+                if (countdown <= 0) {
+                    $(_this).html($(_this).hasClass(`positive`) ? `` : `<i class="check icon"></i>Approved`)
+                    $(_this).toggleClass(`positive`)
+                    $(`tr`).each(function() { $(this).toggleClass(`disabled`) })
+                    clearInterval(x)
+                }
+            }, 1000)
+        })
+    </script>
+</body>
+
+</html>

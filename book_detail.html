@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Book Detail - Library System</title>
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="./dist/fontawesome/css/all.min.css">
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="./dist/animate/animate.css">
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="./dist/uikit/uikit.min.css" />
+
+    <!-- Semantic UI CSS -->
+    <link rel="stylesheet" href="./dist/semantic/semantic.min.css">
+
+    <!-- Style -->
+    <style>
+        #app {
+            padding-top: 0;
+            margin: 0;
+            border: 0;
+        }
+
+        .ui.grid {
+            margin-top: 0;
+        }
+
+        .ui.comments {
+            max-width: initial;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ui very padded segment" id="app">
+        <!-- Menu -->
+        <div class="ui menu">
+            <div class="header item">
+                Library System
+            </div>
+            <a href="search.html" class="item active" data-tooltip="Book" data-position="bottom center">
+                <i class="book icon"></i>
+            </a>
+            <a href="room.html" class="item" data-tooltip="Room" data-position="bottom center">
+                <i class="cube icon"></i>
+            </a>
+            <div class="right menu">
+                <a id="fontsize" class="item" data-tooltip="Font Size" data-position="bottom center">
+                    <i class="font icon"></i>
+                </a>
+                <div class="ui right dropdown item">
+                    <i class="user icon"></i>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div class="item" onclick="window.location.href='personal_center.html'">Reserved Book</div>
+                        <div class="item" onclick="window.location.href='personal_center.html'">Booked Room</div>
+                        <div class="item">Logout</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- breadcrumb -->
+        <div class="ui breadcrumb">
+            <a class="section" href="index.html">Home</a>
+            <div class="divider"> / </div>
+            <a class="section" href="search.html">Book</a>
+            <div class="divider"> / </div>
+            <div class="active section">Book Detail</div>
+        </div>
+
+        <div class="ui two column grid">
+            <h1 class="ui header">Book Detail</h1>
+            <div class="ui celled grid">
+                <div class="row">
+                    <div class="ui five wide column internally celled grid">
+                        <div class="ui row grid" uk-grid uk-lightbox="animation: scale">
+                            <div class="column">
+                                <a class="uk-inline" href="./res/booking_room_1.jpg" data-caption="Caption 1">
+                                    <img class="ui image" src="./res/booking_room_1.jpg" alt="">
+                                </a>
+                                <a class="uk-inline" href="./res/booking_room_2.jpg" data-caption="Caption 2">
+                                    <img class="ui hidden image" src="./res/booking_room_2.jpg" alt="">
+                                </a>
+                                <a class="uk-inline" href="./res/booking_room_3.jpg" data-caption="Caption 3">
+                                    <img class="ui hidden image" src="./res/booking_room_3.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ui row three column grid">
+                            <div class="column">
+                                <img src="./res/booking_room_1.jpg" alt="">
+                            </div>
+                            <div class="column">
+                                <img src="./res/booking_room_2.jpg" alt="">
+                            </div>
+                            <div class="column">
+                                <img src="./res/booking_room_3.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui eleven wide column grid">
+                        <div class="column">
+                            <template id="resource_template">
+                                <div>
+                                    <h2 class="header card-title">Card title</h2>
+                                    <h4 class="header author">Author</h4>
+                                    <div class="ui list">
+                                        <div class="tags"></div><br>
+                                        <div class="category">Category</div><br>
+                                        <div class="type">Type</div><br>
+                                        <div class="year">Year</div><br>
+                                        <p class="desc">Some quick example text to build on the card title and
+                                            make up the bulk of the card's content.</p><br>
+                                        <div class="ui labeled button" tabindex="0">
+                                            <div class="ui red button" data-content="Added to your fovarite">
+                                                <i class="heart icon"></i> Like
+                                            </div>
+                                            <a class="ui basic red left pointing label">
+                                                648
+                                            </a>
+                                        </div>
+                                        <div class="ui labeled button" tabindex="0">
+                                            <div class="ui basic blue button" data-content="Removed to your reserve">
+                                                <i class="id card icon"></i> Reserve
+                                            </div>
+                                            <a class="ui basic left pointing blue label">
+                                                5096
+                                            </a>
+                                        </div>
+
+                                        <br><br>
+
+                                        <div class="ui buttons">
+                                            <button class="ui facebook button">
+                                                <span uk-icon="icon: facebook"></span>
+                                            </button>
+                                            <button class="ui twitter button">
+                                                <span uk-icon="icon: twitter"></span>
+                                            </button>
+                                            <button class="ui instagram button">
+                                                <span uk-icon="icon: instagram"></span>
+                                            </button>
+                                        </div>
+
+                                        <!-- <div class="ui inverted green dropdown button">
+                                                <i class="share icon"></i>Share
+                                                <i class="dropdown icon"></i>
+                                                <div class="menu">
+                                                    <div class="ui item buttons">
+                                                        <button class="ui facebook button">
+                                                            <span uk-icon="icon: facebook"></span>
+                                                            Facebook
+                                                        </button>
+                                                        <button class="ui twitter button">
+                                                            <span uk-icon="icon: twitter"></span>
+                                                            Twitter
+                                                        </button>
+                                                        <button class="ui instagram button">
+                                                            <span uk-icon="icon: instagram"></span>
+                                                            Instagram
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                    </div>
+                              </div>
+                            </template>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="ten wide column">
+                    <div class="ui comments">
+                        <h3 class="ui dividing header">Comments</h3>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="./res/book_lover.svg">
+                            </a>
+                            <div class="content">
+                                <a class="author">Matt</a>
+                                <div class="metadata">
+                                    <span class="date">Today at 5:42PM</span>
+                                </div>
+                                <div class="text">
+                                    How artistic!
+                                </div>
+                            </div>
+                        </div>
+                        <form class="ui reply form">
+                            <div class="field">
+                                <textarea></textarea>
+                            </div>
+                            <div class="ui blue labeled submit icon button">
+                                <i class="icon edit"></i> Add Reply
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="six wide column">
+                    <!-- <div class="ui grid"> -->
+                    <h2 class="header">You may also like...</h2>
+                    <!-- <div class="ui link cards">
+                        <div class="card" style="height: 290px;">
+                            <div class="content" style="background: url(https://picsum.photos/290/?sid=1)">
+                                <div class="header">Matt Giampietro</div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="image">
+                                <img src="https://picsum.photos/290/?sid=2">
+                            </div>
+                            <div class="content">
+                                <div class="header">Molly</div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div uk-slideshow="animation: pull; autoplay: true; autoplay-interval: 3000; max-height: 250;">
+                        <div class="uk-position-relative uk-visible-toggle uk-light">
+                            <ul class="uk-slideshow-items">
+                                <li>
+                                    <img src="https://picsum.photos/800/?sid=1" alt="" uk-cover>
+                                    <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom">
+                                        <h3 class="uk-margin-remove">Book 1</h3>
+                                    </div>
+                                </li>
+                                <li>
+                                    <img src="https://picsum.photos/800/?sid=2" alt="" uk-cover>
+                                    <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom">
+                                        <h3 class="uk-margin-remove">Book 2</h3>
+                                    </div>
+                                </li>
+                                <li>
+                                    <img src="https://picsum.photos/800/?sid=3" alt="" uk-cover>
+                                    <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom">
+                                        <h3 class="uk-margin-remove">Book 3</h3>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-slidenav-large" href="#"
+                                uk-slidenav-previous uk-slideshow-item="previous"></a>
+                            <a class="uk-position-center-right uk-position-small uk-hidden-hover uk-slidenav-large"
+                                href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+                        </div>
+
+                        <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
+                    </div>
+                </div>
+
+                <!-- <button class="ui blue icon button" style="margin-top: 1.5rem;"><i class="angle down icon"></i></button> -->
+                <!-- </div> -->
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- jQuery -->
+    <script src="./dist/jquery/jquery.min.js"></script>
+
+    <!-- Animate JS -->
+    <script src="./dist/animate/animate.js"></script>
+
+    <!-- UIkit JS -->
+    <script src="./dist/uikit/uikit.min.js"></script>
+    <script src="./dist/uikit/uikit-icons.min.js"></script>
+
+    <!-- Semantic UI JS -->
+    <script src="./dist/semantic/semantic.min.js"></script>
+
+    <script>
+        if (!localStorage[`user`])
+            localStorage[`user`] = JSON.stringify(user)
+
+        if (!localStorage[`resource`])
+            localStorage[`resource`] = JSON.stringify(resource)
+
+        let username = ``
+        let users = JSON.parse(localStorage[`user`])
+
+        let scale = 0
+
+        $('.ui.form')
+            .form({
+                fields: {
+                    name: 'empty',
+                    gender: 'empty',
+                    username: 'empty',
+                    password: ['minLength[6]', 'empty'],
+                    skills: ['minCount[2]', 'empty'],
+                    terms: 'checked'
+                }
+            });
+
+        $(`#fontsize`).click(function () {
+            $(`*`).each(function (i, el) {
+                $(this).css(`fontSize`, parseFloat($(this).css(`fontSize`)) * (scale >= 2 ? 1 / 1.1 / 1.1 : 1.1) + `px`)
+            })
+            if (scale++ >= 2)
+                scale = 0
+        })
+
+        let tags = {
+            hot: `red`,
+            recommanded: `green`,
+            beginner: `teal`
+        }
+
+        let resource_template = $(`#resource_template`)
+        let resource_content = resource_template.contents().filter(function () {
+            return this.nodeType == 1
+        })
+
+        resource_content = resource_content.toArray()[0]
+
+        let resource = JSON.parse(localStorage[`resource`])
+        let resource_node = document.importNode(resource_content, true)
+        resource_node.setAttribute(`id`, `resource_1`)
+        resource_node.querySelector(`.card-title`).innerHTML = resource[1][`name`]
+        resource_node.querySelector(`.author`).innerHTML = `by ${resource[1][`author`]}`
+        resource_node.querySelector(`.category`).innerHTML = `<i class="fas fa-th"></i> ${resource[1][`category`]}`
+        resource_node.querySelector(`.type`).innerHTML = `<i class="fas fa-swatchbook"></i> ${resource[1][`type`]}`
+        resource_node.querySelector(`.year`).innerHTML = `<i class="fas fa-calendar-alt"></i> ${resource[1][`year`]}`
+        resource_node.querySelector(`.desc`).innerHTML = resource[1][`description`]
+        for (let j in resource[1][`tags`])
+            resource_node.querySelector(`.tags`).innerHTML += `<a class="ui tag label ${tags[resource[1][`tags`][j]]}">${resource[1][`tags`][j]}</a> `
+        resource_template.parent().append(resource_node)
+
+        $(`[tabindex]`).click(function (e) {
+            let _this = this
+            $(_this).toggleClass(`disabled`)
+            $(_this).find(`.ui.button`).toggleClass(`loading`)
+            let countdown = 1
+            let x = setInterval(function () {
+                countdown--
+                if (countdown <= 0) {
+                    $(_this).toggleClass(`disabled`)
+                    $(_this).find(`.ui.button`).toggleClass(`basic loading`)
+                    $(_this).find(`.ui.label`).text(parseInt($(_this).find(`.ui.label`).text()) + ($(_this).find(`.ui.button`).hasClass(`basic`) ? -1 : 1))
+                    $(_this).find(`.ui.button`).attr(`data-content`, $(_this).find(`.ui.button`).attr(`data-content`).replace($(_this).find(`.ui.button`).attr(`data-content`).split(` `)[0], $(_this).find(`.ui.button`).attr(`data-content`).split(` `)[0] == `Added` ? `Removed` : `Added`))
+                    $(_this).find(`.ui.button`).popup(`show`)
+                    clearInterval(x)
+                }
+            }, 1000)
+        })
+
+        $(`.tag`).on(`mouseenter`, function (e) {
+            $(this).transition(`pulse`)
+        })
+
+        $(`[tabindex]`).each(function (e) {
+            $(this).find(`.ui.button`).popup()
+        })
+
+        $(function () {
+            $('.ui.dropdown').each(function () {
+                $(this).dropdown({
+                    on: `hover`
+                })
+            })
+        })
+    </script>
+
+</html>

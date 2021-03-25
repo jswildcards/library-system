@@ -1,0 +1,4 @@
+body { height: 100vh; background: #b5bec4; }
+.container { background: url(../image/b2.png) center no-repeat; }
+.card { background: rgba(255, 255, 255, .7); }
+#btn_code { cursor: no-drop; }

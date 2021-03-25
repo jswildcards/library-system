@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="./dist/fontawesome/css/all.min.css">
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="./dist/animate/animate.css">
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="./dist/uikit/uikit.min.css" />
+
+    <!-- Semantic UI CSS -->
+    <link rel="stylesheet" href="./dist/semantic/semantic.min.css">
+
+    <!-- Style -->
+    <style>
+        body {
+            overflow-y: hidden;
+        }
+
+        #app {
+            padding-top: 0;
+            margin: 0;
+            border: 0;
+        }
+
+        .ui.grid {
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ui very padded segment" id="app">
+        <!-- Menu -->
+        <div class="ui menu">
+            <div class="header item">
+                Library System
+            </div>
+            <a class="item active" data-tooltip="Book" data-position="bottom center">
+                <i class="book icon"></i>
+            </a>
+            <a href="room.html" class="item" data-tooltip="Room" data-position="bottom center">
+                <i class="cube icon"></i>
+            </a>
+            <div class="right menu">
+                <a id="fontsize" class="item" data-tooltip="Font Size" data-position="bottom center">
+                    <i class="font icon"></i>
+                </a>
+                <div class="ui right dropdown item">
+                    <i class="user icon"></i>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div class="item" onclick="window.location.href='personal_center.html'">Reserved Book</div>
+                        <div class="item" onclick="window.location.href='personal_center.html'">Booked Room</div>
+                        <div class="item">Logout</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- breadcrumb -->
+        <div class="ui breadcrumb">
+            <a class="section">Home</a>
+            <div class="divider"> / </div>
+            <a class="section active">Personal Center</a>
+        </div>
+
+        <h2 class="ui inverted center aligned icon header uk-background-blend-soft-light uk-background-secondary uk-background-fixed" style="background-image: url(./res/user_back.jpg); padding: 1em 0;">
+            <i class="user icon"></i>
+            <div class="content">
+                Personal Center
+                <div class="sub header"></div>
+            </div>
+        </h2>
+
+        <div class="ui two column grid">
+            <div class="three wide column">
+                <div class="ui vertical pointing fluid menu">
+                    <a class="active item">
+                        Reserved Books
+                    </a>
+                    <a class="item">
+                        Booked Room
+                    </a>
+                </div>
+            </div>
+
+            <div class="thirteen wide column">
+                <h2 class="ui header">
+                    <i class="big icons">
+                        <i class="book icon"></i>
+                        <i class="corner id card icon"></i>
+                    </i>
+                    Reserved Books
+                </h2>
+                <div class="ui items">
+                    <div class="item">
+                        <div class="image">
+                            <img src="./res/book_lover.svg">
+                        </div>
+                        <div class="content">
+                            <a class="header">Header</a>
+                            <div class="meta">
+                                <span>Description</span>
+                            </div>
+                            <div class="description">
+                                <p></p>
+                            </div>
+                            <div class="extra">
+                                Additional Details
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="image">
+                            <img src="./res/book_lover.svg">
+                        </div>
+                        <div class="content">
+                            <a class="header">Header</a>
+                            <div class="meta">
+                                <span>Description</span>
+                            </div>
+                            <div class="description">
+                                <p></p>
+                            </div>
+                            <div class="extra">
+                                Additional Details
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="./dist/jquery/jquery.min.js"></script>
+
+    <!-- Animate JS -->
+    <script src="./dist/animate/animate.js"></script>
+
+    <!-- UIkit JS -->
+    <script src="./dist/uikit/uikit.min.js"></script>
+    <script src="./dist/uikit/uikit-icons.min.js"></script>
+
+    <!-- Semantic UI JS -->
+    <script src="./dist/semantic/semantic.min.js"></script>
+
+    <script>
+        if (!localStorage[`user`])
+            localStorage[`user`] = JSON.stringify(user)
+
+        if (!localStorage[`resource`])
+            localStorage[`resource`] = JSON.stringify(resource)
+
+        let users = JSON.parse(localStorage[`user`])
+        let user_in = users.find(function (u) { return u.email == localStorage[`sign_in_username`] })
+
+        $(`.sub.header`).text(user_in.username)
+    </script>
+</body>
+
+</html>

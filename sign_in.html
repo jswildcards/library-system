@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign in - Library System</title>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="./public/dist/fontawesome-5.4.1/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./public/dist/bootstrap-4.1.3/bootstrap.min.css">
+    <!-- Style -->
+    <link rel="stylesheet" href="./public/css/sign_in.css">
+</head>
+<body>
+    <div class="container d-flex align-items-center h-100">
+        <div class="modal fade" id="code_modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Verification Code Sent</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        A <strong>verification code</strong> has been sent to you. Please check your email for the code and enter in <strong>"given code"</strong> row in this page in order to get back a reseted password.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="forget_password_modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">New Password Sent</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        A new password has been sent to you. Please check your email for the new passwrd.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-group col-lg-8 offset-lg-2">
+            <div class="card d-none d-md-block" action="">
+                <div class="card-body">
+                    <img class="col-12" src="./public/image/icon.png" alt="">
+                    <h2 class="card-title text-center mt-3">Library System</h2>
+                </div>
+            </div>
+
+            <form id="sign_in_form" class="card needs-validation" novalidate action="">
+                <div class="card-body d-flex flex-column justify-content-center">
+                    <img class="col-6 offset-3 d-block d-md-none" src="./public/image/icon.png" alt="">
+                    <h2 class="card-title text-center mt-3 d-block d-md-none">Library System</h2>
+                    <h1 class="card-title text-center">Welcome</h1>
+                    <div class="input-group mt-3">
+                        <div class="input-group-prepend"><label for="username" class="input-group-text"><i class="fas fa-user"></i></label></div>
+                        <input type="text" id="username" class="form-control" placeholder="username" required autofocus>
+                        <div id="email-tail" class="input-group-append input-group-text">@example.com</div>
+                        <div class="invalid-feedback">
+                            Please enter username
+                        </div>
+                    </div>
+                    <small id="username_msg" class="form-text"></small>
+                    <div class="input-group mt-2">
+                        <div class="input-group-prepend"><label for="password" class="input-group-text"><i class="fas fa-unlock-alt"></i></label></div>
+                        <input type="password" id="password" class="form-control" placeholder="password" required>
+                        <div class="input-group-append"><button class="btn btn-outline-secondary rounded-right secret" type="button"><i class="fas fa-eye"></i></button></div>
+                        <div class="invalid-feedback">
+                            Please enter password
+                        </div>
+                    </div>
+                    <small id="password_msg" class="form-text"></small>
+                    <button type="submit" id="sign_in_button" class="btn btn-success mt-4">Sign In</button>
+                    <a id="forget_password" href="#" class="text-right p-2">Forget Password?</a>
+                </div>
+            </form>
+
+            <form id="forget_password_form" class="card" novalidate action="">
+                <div class="card-body d-flex flex-column justify-content-center h-100">
+                    <img class="col-6 offset-3 d-block d-md-none" src="./public/image/icon.png" alt="">
+                    <h2 class="card-title text-center mt-3 d-block d-md-none">Library System</h2>
+                    <h1 class="card-title text-center">Forget Password</h1>
+                    <div class="input-group mt-3">
+                        <div class="input-group-prepend"><label for="forget_passord_username" class="input-group-text"><i class="fas fa-user"></i></label></div>
+                        <input type="text" id="forget_password_username" class="form-control" placeholder="username" required data-toggle="tooltip" data-placement="top" title="We'll send you an email with verification code.">
+                        <div id="email-tail2" class="input-group-append input-group-text">@example.com</div>
+                        <div class="invalid-feedback">
+                            Please enter username
+                        </div>
+                    </div>
+                    <small id="forget_password_username_msg" class="form-text text-danger"></small>
+                    <div class="input-group mt-3">
+                        <div class="input-group-prepend"><label for="ver_code" class="input-group-text"><i class="fas fa-code"></i></label></div>
+                        <input type="text" id="ver_code" class="form-control" placeholder="given code" required>
+                        <div class="input-group-append"><button id="btn_code" type="button" class="btn btn-primary rounded-right disabled" disabled>Get Code</button></div>
+                        <div class="invalid-feedback">
+                            Please enter verification code
+                        </div>
+                    </div>
+                    <button type="submit" id="forget_password_button" class="btn btn-success mt-4">Send Me Email</button>
+                    <a id="sign_in" href="#" class="text-right p-2">Back to Sign in</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="./public/dist/jquery-3.3.1/jquery.min.js"></script>
+    <script src="./public/dist/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="./public/dist/bootstrap-4.1.3/bootstrap.bundle.min.js"></script>
+    <!-- Data -->
+    <script src="./public/data/default_password.js"></script>
+    <script src="./public/data/user.js"></script>
+    <script src="./public/data/resource.js"></script>
+    <!-- Script -->
+    <script src="./public/js/sign_in.js"></script>
+</body>
+</html>

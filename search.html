@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search - Library System</title>
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="./dist/animate/animate.css">
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="./dist/uikit/uikit.min.css" />
+
+    <!-- Semantic UI CSS -->
+    <link rel="stylesheet" href="./dist/semantic/semantic.min.css">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="./public/dist/fontawesome-5.4.1/css/all.min.css">
+    <!-- jQuery UI CSS -->
+    <link rel="stylesheet" href="./public/dist/jquery-ui-1.12.1/jquery-ui.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./public/dist/bootstrap-4.1.3/bootstrap.min.css">
+
+    <!-- Style -->
+    <style>
+        #app {
+            padding-top: 0;
+            margin: 0;
+            border: 0;
+        }
+
+        .ui.grid {
+            margin-top: 0;
+        }
+
+        .ui.comments {
+            max-width: initial;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ui very padded segment" id="app">
+        <!-- Menu -->
+        <div class="ui menu">
+            <div class="header item">
+                Library System
+            </div>
+            <a href="search.html" class="item active" data-tooltip="Book" data-position="bottom center">
+                <i class="book icon"></i>
+            </a>
+            <a href="room.html" class="item" data-tooltip="Room" data-position="bottom center">
+                <i class="cube icon"></i>
+            </a>
+            <div class="right menu">
+                <a id="fontsize" class="item" data-tooltip="Font Size" data-position="bottom center">
+                    <i class="font icon"></i>
+                </a>
+                <div class="ui right dropdown item">
+                    <i class="user icon"></i>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div class="item" onclick="window.location.href='personal_center.html'">Reserved Book</div>
+                        <div class="item" onclick="window.location.href='personal_center.html'">Booked Room</div>
+                        <div class="item">Logout</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- breadcrumb -->
+        <div class="ui breadcrumb">
+            <a class="section" href="index.html">Home</a>
+            <div class="divider"> / </div>
+            <a class="section active">Room</a>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-lg-3 offset-lg-1 my-3">
+                    <p class="mt-2 py-2" id="searched_result">Searched: 54, Showing: 1 - 5</p>
+
+                    <div class="input-group">
+                        <input type="text" id="search" class="form-control" placeholder="Search...">
+                        <div class="input-group-append" id="search_clear">
+                            <button class="btn btn-outline-secondary"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-link mt-3 p-0" data-toggle="collapse" data-target="#collapseExample">
+                        &gt;&gt; Advance Search
+                    </button>
+                    <div class="collapse py-3" id="collapseExample">
+                        <div><i class="fas fa-tag"></i> Tags</div>
+                        <div class="mt-2">
+                            <button class="btn badge p-2 btn-outline-success" data-toggle="button">recommanded</button>
+                            <button class="btn badge p-2 btn-outline-danger" data-toggle="button">hot</button>
+                            <button class="btn badge p-2 btn-outline-info" data-toggle="button">beginner</button>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label for="category"><i class="fas fa-th"></i> Category</label>
+                            <select class="custom-select" id="category">
+                                <option value="all" selected>all</option>
+                                <option value="book">book</option>
+                                <option value="software">software</option>
+                                <option value="magazine">magazine</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label for="type"><i class="fas fa-swatchbook"></i> Type</label>
+                            <select class="custom-select" id="type">
+                                <option value="all" selected>all</option>
+                                <option value="Psychology">Psychology</option>
+                                <option value="Human Beings">Human Beings</option>
+                                <option value="Social Science">Social Science</option>
+                                <option value="Health and Care">Health and Care</option>
+                                <option value="Computer Science">Computer Science</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <!-- <div class="input-group pb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar-alt mr-1"></i>Year</span>
+                            </div>
+                            <input type="text" id="year" class="form-control" readonly style="cursor: not-allowed;">
+                        </div> -->
+                            <label for="type"><i class="fas fa-calendar-alt"></i> Year: </label>
+                            <input type="text" id="year" readonly style="border: 0; cursor: not-allowed;" size=9>
+                            <div id="slider-range" class="mt-2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="resources" class="col-12 col-lg-6 my-3 d-flex flex-wrap justify-content-center">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="d-none" id="recycle_list"></div>
+
+                    <template id="resource_template">
+                        <div class="card-group my-2">
+                            <div class="card col-5">
+                                <div class="card-body d-flex align-items-center justify-content-center">
+                                    <img src="https://picsum.photos/200/300" alt="">
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <!-- <img class="card-img-top d-none d-lg-block" src="./public/image/icon.png" alt="Card image cap"> -->
+                                <div class="card-body">
+                                    <h5 class="book-title d-none">Card title</h5>
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="fake-author"></p>
+                                    <p class="author">Author</p>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item px-0">
+                                            <p class="tags"></p>
+                                            <p class="category">Category</p>
+                                            <p class="type">Type</p>
+                                            <p class="year m-0">Year</p>
+                                        </li>
+                                    </ul>
+                                    <!-- <p class="tags"></p>
+                                <p class="category">Category</p>
+                                <p class="type">Type</p>
+                                <p class="year">Year</p> -->
+                                    <p class="desc pt-3">Some quick example text to build on the card title and make up
+                                        the bulk of the card's content.</p>
+                                    <a href="book_detail.html" class="btn btn-primary">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="./public/dist/jquery-3.3.1/jquery.min.js"></script>
+    <script src="./public/dist/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="./public/dist/bootstrap-4.1.3/bootstrap.bundle.min.js"></script>
+    <!-- Data -->
+    <script src="./public/data/user.js"></script>
+    <script src="./public/data/resource.js"></script>
+
+    <!-- Animate JS -->
+    <script src="./dist/animate/animate.js"></script>
+
+    <!-- UIkit JS -->
+    <script src="./dist/uikit/uikit.min.js"></script>
+    <script src="./dist/uikit/uikit-icons.min.js"></script>
+
+    <!-- Semantic UI JS -->
+    <script src="./dist/semantic/semantic.min.js"></script>
+
+    <!-- Script -->
+    <script src="./public/js/search.js"></script>
+</body>
+
+</html>
